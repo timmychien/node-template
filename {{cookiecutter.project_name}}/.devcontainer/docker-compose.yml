@@ -1,0 +1,10 @@
+version: "3"
+services:
+  {{cookiecutter.service_name}}:
+    volumes:
+      - .:/app #mount current dir into container
+      - ~/.ssh:/home/user/.ssh #mount ssh key for git
+      - ~/.vscode-server/bin:/vscode/vscode-server/bin/linux-x64
+    entrypoint: []
+    command: tail -f /dev/null
+    user: user
