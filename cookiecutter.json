@@ -1,8 +1,8 @@
 {
-    "project_name":"{{cookiecutter.project_name}}",
-    "project_description":"{{cookiecutter.project_description}}",
+    "project_name":"Basic Project",
+    "project_description":"Node.js Based project",
     "service_name":"{{ cookiecutter.project_name.lower().replace(' ','-'}.replace('-','_'}}",
-    "author":"{{cookiecutter.author}}",
+    "author":"chien871101",
     "host_port":"3000",
     "container_port":"3000"
 }
