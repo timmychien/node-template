@@ -1,0 +1,4 @@
+FROM node:alpine
+COPY . .
+WORKDIR /app
+RUN npm install
