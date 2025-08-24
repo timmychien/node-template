@@ -5,6 +5,9 @@
         "docker-compose.yml"
     ],
     "service":"{{cookiecutter.service_name}}",
+    "mounts": [
+        "source=${localWorkspaceFolder},target=/app,type=bind"
+    ],
     "workspaceFolder": "/app",
     "customizations": {
         "vscode":{

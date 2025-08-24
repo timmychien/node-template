@@ -1,4 +1,17 @@
 FROM node:alpine
 COPY . .
 WORKDIR /app
+EXPOSE 3000
+RUN addgroup -g 1010 user \
+    && adduser -u 1005 -G user -D user
+RUN apk update \
+    && apk add --no-cache \
+       git \
+       make \
+       bash-completion \
+       font-noto \
+       font-noto-emoji
+COPY --chown=user:user . .
+USER user
 RUN npm install
+CMD ["--host","0.0.0.0", "--port","{{cookiecutter.container_port}}"]
