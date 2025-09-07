@@ -1,1 +1,1 @@
-# node-template
+# {{cookiecutter.project_name}}
