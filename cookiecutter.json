@@ -3,6 +3,5 @@
     "project_description": "Node.js Based project",
     "service_name": "{{ cookiecutter.project_name.lower().replace(' ', '-').replace('-', '_') }}",
     "author": "timmychien",
-    "host_port": "3000",
-    "container_port": "3000"
+    "framework": ["react", "express", "fullstack"]
 }
