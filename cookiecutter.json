@@ -5,7 +5,6 @@
   "author": "timmychien",
   "project_description": "A new project",
   "service_name": "{{ cookiecutter.project_name.lower().replace(' ', '-').replace('-', '_') }}",
-  "front_end_port": "5173",
-  "back_end_port": "3000"
+  "front_end_port": "",
+  "back_end_port": ""
 }
-
