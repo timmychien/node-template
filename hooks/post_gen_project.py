@@ -16,13 +16,13 @@ def setup_express(project_dir, back_end_port):
 const express = require("express");
 const app = express();
 const port = process.env.PORT || {back_end_port};
-
 app.get("/", (req, res) => {{
-  res.send("Hello from {{ cookiecutter.project_name }} backend!");
+  res.send("Hello from {{ '{{' }} cookiecutter.project_name {{ '}}' }} backend!");
 }});
 
 app.listen(port, () => console.log(`Server running at http://localhost:${{port}}`));
 """)
+
 
 
 def setup_react(project_dir, front_end_port):
