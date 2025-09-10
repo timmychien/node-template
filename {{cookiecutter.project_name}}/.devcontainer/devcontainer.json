@@ -1,36 +1,50 @@
 {
-    "name":"{{cookiecutter.service_name}}",
-    "dockerComposeFile":[
-        "../docker-compose.yml",
-        "docker-compose.yml"
-    ],
-    "service":"{{cookiecutter.service_name}}",
-    "mounts": [
-        "source=${localWorkspaceFolder},target=/app,type=bind"
-    ],
-    "workspaceFolder": "/app",
-    "customizations": {
-        "vscode":{
-            "extensions": [
-                "mhutchie.git-graph",
-                "donjayamannne.githistory",
-                "emamodio.gitlens",
-                "redhat.vscode-yaml",
-                "shd101wyy.markdown-preview-enhanced",
-                "streetsidesoftware.code-spell-checker",
-                "esbenp.prettier-vscode",
-                "johnpapa.vscode-peacock"
-            ],
-            "settings": {
-                "terminal.integrated.profiles.linux":{
-                   "bash":{
-                    "path": "/bin/bash"
-                   }
-                },
-                "terminal.integrated.defaultProfile.linux":"bash"
-            }
-        }
-    },
-    "postCreateCommand": ".devcontainer/post_create.sh",
-    "remoteUser":"user"
+  "name": "{{ cookiecutter.service_name }}",
+  "dockerComposeFile": [
+    "../docker-compose.yml",
+    "docker-compose.yml"
+  ],
+  "service": "{{ cookiecutter.service_name }}",
+  "mounts": [
+    "source=${localWorkspaceFolder},target=/app,type=bind"
+  ],
+  "workspaceFolder": "/app",
+  "files.associations": {
+    ".devcontainer.json": "json"
+  },
+  "json.schemas": [],
+  "forwardPorts": [
+    {% if cookiecutter.framework == "react" -%}
+      {{ cookiecutter.front_end_port | int }}
+    {% elif cookiecutter.framework == "express" -%}
+      {{ cookiecutter.back_end_port | int }}
+    {% elif cookiecutter.framework == "fullstack" -%}
+      {{ cookiecutter.front_end_port | int }},
+      {{ cookiecutter.back_end_port | int }}
+    {% endif -%}
+  ],
+  "customizations": {
+    "vscode": {
+      "extensions": [
+        "mhutchie.git-graph",
+        "donjayamannne.githistory",
+        "emamodio.gitlens",
+        "redhat.vscode-yaml",
+        "shd101wyy.markdown-preview-enhanced",
+        "streetsidesoftware.code-spell-checker",
+        "esbenp.prettier-vscode",
+        "johnpapa.vscode-peacock"
+      ],
+      "settings": {
+        "terminal.integrated.profiles.linux": {
+          "bash": {
+            "path": "/bin/bash"
+          }
+        },
+        "terminal.integrated.defaultProfile.linux": "bash"
+      }
+    }
+  },
+  "postCreateCommand": ".devcontainer/post_create.sh",
+  "remoteUser": "user"
 }

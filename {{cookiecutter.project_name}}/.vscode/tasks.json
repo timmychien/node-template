@@ -1,0 +1,24 @@
+{
+  "version": "2.0.0",
+  "tasks": [
+    {% if cookiecutter.framework == "express" or cookiecutter.framework == "fullstack" %}
+    {
+      "label": "npm: install server deps",
+      "type": "shell",
+      "command": "npm install",
+      "options": { "cwd": "${workspaceFolder}/server" },
+      "problemMatcher": []
+    }
+    {% if cookiecutter.framework == "fullstack" %},{% endif %}
+    {% endif %}
+    {% if cookiecutter.framework == "react" or cookiecutter.framework == "fullstack" %}
+    {
+      "label": "npm: install client deps",
+      "type": "shell",
+      "command": "npm install",
+      "options": { "cwd": "${workspaceFolder}/client" },
+      "problemMatcher": []
+    }
+    {% endif %}
+  ]
+}
