@@ -89,8 +89,11 @@ def main():
 
     # Cookiecutter variables
     framework = "{{ cookiecutter.framework }}"
-    front_end_port = int("{{ cookiecutter.front_end_port }}")
-    back_end_port = int("{{ cookiecutter.back_end_port }}")
+    # Read cookiecutter variables
+
+    # Convert to int if not empty, else set to None
+    front_end_port = int("{{ cookiecutter.front_end_port }}") if "{{ cookiecutter.front_end_port }}".strip() else None
+    back_end_port  = int("{{ cookiecutter.back_end_port }}")  if "{{ cookiecutter.back_end_port }}".strip() else None
 
     if framework == "react":
         setup_react(project_dir, front_end_port)
