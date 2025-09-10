@@ -1,0 +1,29 @@
+{
+  "version": "0.2.0",
+  "configurations": [
+    {% if cookiecutter.framework == "express" or cookiecutter.framework == "fullstack" %}
+    {
+      "name": "Launch Express Server",
+      "type": "pwa-node",
+      "request": "launch",
+      "program": "${workspaceFolder}/server/index.js",
+      "cwd": "${workspaceFolder}/server",
+      "console": "integratedTerminal",
+      "internalConsoleOptions": "neverOpen",
+      "preLaunchTask": "npm: install server deps"
+    }
+    {% if cookiecutter.framework == "fullstack" %},{% endif %}
+    {% endif %}
+
+    {% if cookiecutter.framework == "react" or cookiecutter.framework == "fullstack" %}
+    {
+      "name": "Launch Vite React",
+      "type": "pwa-chrome",
+      "request": "launch",
+      "url": "http://localhost/{{ cookiecutter.front_end_port }}",
+      "webRoot": "${workspaceFolder}/client",
+      "preLaunchTask": "npm: install client deps"
+    }
+    {% endif %}
+  ]
+}
